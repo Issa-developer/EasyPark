@@ -81,3 +81,8 @@ Route::post('/profile/update', [ProfileController::class, 'update'])
 Route::get('/', function () {
     return redirect()->route('login');
 });
+
+Auth::routes(); 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
