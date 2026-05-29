@@ -14,6 +14,43 @@ class AuthController extends Controller
         return view('client.auth.login');
     }
 
+    public function showRegisterForm()
+{
+    return view('client.auth.register');
+}
+
+public function register(Request $request)
+{
+    $request->validate([
+        'full_name'     => 'required|string|max:255',
+        'email'         => 'required|email|unique:users,email',
+        'password'      => 'required|string|min:6|confirmed',
+        'license_plate' => 'required|string|max:50',
+        'car_make'      => 'required|string|max:100',
+        'car_model'     => 'required|string|max:100',
+    ]);
+
+    $user = User::create([
+        'name'     => $request->full_name,
+        'email'    => $request->email,
+        'password' => Hash::make($request->password),
+        'role'     => 'client',
+        'status'   => 'active',
+    ]);
+
+    \App\Models\Vehicle::create([
+        'user_id'       => $user->id,
+        'license_plate' => strtoupper(trim($request->license_plate)),
+        'make'          => $request->car_make,
+        'model'         => $request->car_model,
+        'color'         => null,
+    ]);
+
+    Auth::login($user);
+
+    return $this->redirectToDashboard();
+}
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
