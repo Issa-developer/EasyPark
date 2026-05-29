@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ParkingSpot extends Model
 {
     use HasFactory;
+
+   
 
     protected $fillable = [
         'parking_lot_id', 'spot_number', 'level', 'zone',

@@ -12,10 +12,8 @@ Route::get('/', fn() => redirect()->route('login'));
 
 // ─── Guest Routes ─────────────────────────────────────────
 Route::middleware('guest')->group(function () {
-    Route::get('/login',     [AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login',    [AuthController::class, 'login'])->name('login.post');
-    Route::get('/register',  [AuthController::class, 'showRegisterForm'])->name('register');
-    Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+    Route::get('/login',  [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 });
 
 // ─── Logout ───────────────────────────────────────────────
@@ -51,10 +49,5 @@ Route::middleware(['auth', 'role:client'])
     ->prefix('client')
     ->name('client.')
     ->group(function () {
-        Route::get('/dashboard',      [ClientDashboard::class, 'index'])->name('dashboard');
-        Route::get('/history',        [ClientDashboard::class, 'index'])->name('history.index');
-        Route::get('/vehicles',       [ClientDashboard::class, 'index'])->name('vehicles.index');
-        Route::get('/payments',       [ClientDashboard::class, 'index'])->name('payments.index');
-        Route::get('/profile/edit',   [ClientDashboard::class, 'index'])->name('profile.edit');
-        Route::post('/profile/update',[ClientDashboard::class, 'index'])->name('profile.update');
+        Route::get('/dashboard', [ClientDashboard::class, 'index'])->name('dashboard');
     });
