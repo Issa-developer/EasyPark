@@ -1,61 +1,91 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-gray-100">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <title>EasyPark - Login</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style> body { font-family: 'Inter', sans-serif; } </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1973f0",
+                        "background-light": "#f6f7f8",
+                    },
+                },
+            },
+        }
+    </script>
 </head>
-<body class="h-full">
+<body class="h-full bg-background-light">
 <div class="min-h-screen flex">
+
     {{-- Left panel --}}
-    <div class="w-full lg:w-1/2 flex flex-col justify-center px-8 lg:px-24 bg-white">
-        <div class="mb-8 flex items-center gap-2">
-            <div class="w-8 h-8 bg-blue-600 rounded-lg"></div>
-            <span class="font-bold text-lg">EasyPark</span>
+    <div class="w-full lg:w-1/2 flex flex-col justify-center px-8 lg:px-24 bg-white shadow-sm">
+
+        {{-- Logo --}}
+        <div class="mb-10 flex items-center gap-3">
+            <div class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center">
+                <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white">
+                    <path clip-rule="evenodd"
+                          d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z"
+                          fill="currentColor" fill-rule="evenodd"></path>
+                </svg>
+            </div>
+            <span class="font-bold text-xl text-[#0d131c]">EasyPark</span>
         </div>
 
-        <h1 class="text-2xl font-semibold mb-2">Log in to your Account</h1>
+        <h1 class="text-2xl font-bold text-[#0d131c] mb-1">Log in to your Account</h1>
+        <p class="text-sm text-slate-500 mb-8">Welcome back! Please enter your details.</p>
 
-        <form method="POST" action="{{ route('login.post') }}" class="space-y-6 mt-6">
+        <form method="POST" action="{{ route('login.post') }}" class="space-y-5">
             @csrf
 
+            {{-- Error Message --}}
             @if($errors->any())
-                <div class="bg-red-50 text-red-700 text-sm rounded-lg px-4 py-3">
+                <div class="bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3">
                     {{ $errors->first() }}
                 </div>
             @endif
 
+            {{-- Email --}}
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                <label class="block text-sm font-medium text-slate-700 mb-1.5">Email Address</label>
                 <input type="email" name="email" value="{{ old('email') }}"
-                       class="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                       placeholder="you@strathmore.edu"
+                       class="block w-full rounded-xl border-slate-200 bg-slate-50 px-4 py-2.5 text-sm focus:border-primary focus:ring-primary transition">
             </div>
 
+            {{-- Password --}}
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                <input type="password" name="password"
-                       class="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-            </div>
-
-            <div class="flex items-center justify-between text-sm">
-                <div class="flex items-center gap-2">
-                    <input id="remember" name="remember" type="checkbox"
-                           class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                    <label for="remember" class="text-gray-700">Remember me</label>
+                <div class="flex items-center justify-between mb-1.5">
+                    <label class="block text-sm font-medium text-slate-700">Password</label>
+                    <a href="#" class="text-xs text-primary hover:underline">Forgot Password?</a>
                 </div>
-                <a href="#" class="text-blue-600 hover:underline">Forgot Password?</a>
+                <input type="password" name="password"
+                       placeholder="••••••••"
+                       class="block w-full rounded-xl border-slate-200 bg-slate-50 px-4 py-2.5 text-sm focus:border-primary focus:ring-primary transition">
             </div>
 
+            {{-- Remember me --}}
+            <div class="flex items-center gap-2">
+                <input id="remember" name="remember" type="checkbox"
+                       class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary">
+                <label for="remember" class="text-sm text-slate-600">Remember me</label>
+            </div>
+
+            {{-- Submit --}}
             <button type="submit"
-                    class="w-full py-2.5 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 transition">
+                    class="w-full py-2.5 rounded-xl bg-primary hover:bg-blue-700 text-white font-semibold text-sm transition shadow-sm">
                 Login
             </button>
 
-            <p class="text-center text-sm text-gray-600">
+            {{-- Register link --}}
+            <p class="text-center text-sm text-slate-500">
                 Don't have an account?
-                <a href="{{ route('register') }}" class="text-blue-600 font-medium hover:underline">
+                <a href="{{ route('register') }}" class="text-primary font-semibold hover:underline">
                     Sign Up
                 </a>
             </p>
@@ -63,9 +93,34 @@
     </div>
 
     {{-- Right image panel --}}
-    <div class="hidden lg:block lg:w-1/2">
-        <img src="{{ asset('images/parking-login.png') }}" class="w-full h-full object-cover" alt="Parking">
+    <div class="hidden lg:flex lg:w-1/2 bg-primary items-center justify-center relative overflow-hidden">
+        <img src="{{ asset('images/parking-login.png') }}"
+             class="w-full h-full object-cover opacity-30 absolute inset-0" alt="Parking">
+        <div class="relative z-10 text-center px-12">
+            <h2 class="text-4xl font-black text-white leading-tight mb-4">
+                Smart Parking<br/>for Strathmore
+            </h2>
+            <p class="text-blue-100 text-sm leading-relaxed">
+                Real-time parking availability across all campus lots.
+                Know before you go.
+            </p>
+            <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+                <div class="bg-white/10 rounded-2xl p-4">
+                    <p class="text-2xl font-black text-white">320</p>
+                    <p class="text-xs text-blue-100 mt-1">Student Spots</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-4">
+                    <p class="text-2xl font-black text-white">80</p>
+                    <p class="text-xs text-blue-100 mt-1">Phase 1 Spots</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-4">
+                    <p class="text-2xl font-black text-white">40</p>
+                    <p class="text-xs text-blue-100 mt-1">SBS Spots</p>
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>
 </body>
 </html>
