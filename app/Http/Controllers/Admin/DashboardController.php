@@ -40,25 +40,26 @@ class DashboardController extends Controller
     }
 
     public function sessions(Request $request)
-    {
-        $query = ParkingSession::with(['lot', 'spot']);
+{
+    $query = ParkingSession::with(['lot', 'spot']);
 
-        if ($request->filled('plate')) {
-            $query->where('license_plate_snapshot', 'like', '%' . $request->plate . '%');
-        }
-
-        if ($request->filled('status')) {
-            $query->where('status', $request->status);
-        }
-
-        if ($request->filled('lot_id')) {
-            $query->where('parking_lot_id', $request->lot_id);
-        }
-
-        $sessions = $query->latest('started_at')->paginate(20);
-
-        return response()->json($sessions);
+    if ($request->filled('plate')) {
+        $query->where('license_plate_snapshot', 'like', '%' . $request->plate . '%');
     }
+
+    if ($request->filled('status')) {
+        $query->where('status', $request->status);
+    }
+
+    if ($request->filled('lot_id')) {
+        $query->where('parking_lot_id', $request->lot_id);
+    }
+
+    $sessions = $query->latest('started_at')->paginate(20);
+    $lots = ParkingLot::all();
+
+    return view('admin.sessions', compact('sessions', 'lots'));
+}
 
     public function users()
     {
