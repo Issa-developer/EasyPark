@@ -62,10 +62,10 @@ class DashboardController extends Controller
 }
 
     public function users()
-    {
-        $users = User::whereIn('role', ['security', 'client'])->get();
-        return response()->json($users);
-    }
+{
+    $users = User::whereIn('role', ['security', 'client'])->get();
+    return view('admin.users', compact('users'));
+}
 
     public function createSecurityGuard(Request $request)
 {
