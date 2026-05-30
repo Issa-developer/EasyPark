@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Security\SessionController;
 use App\Http\Controllers\Client\DashboardController as ClientDashboard;
+use App\Http\Controllers\Client\ProfileController;
 
 // ─── Root ────────────────────────────────────────────────
 Route::get('/', fn() => redirect()->route('login'));
@@ -55,6 +56,6 @@ Route::middleware(['auth', 'role:client'])
         Route::get('/history',        [ClientDashboard::class, 'index'])->name('history.index');
         Route::get('/vehicles',       [ClientDashboard::class, 'index'])->name('vehicles.index');
         Route::get('/payments',       [ClientDashboard::class, 'index'])->name('payments.index');
-        Route::get('/profile/edit',   [ClientDashboard::class, 'index'])->name('profile.edit');
-        Route::post('/profile/update',[ClientDashboard::class, 'index'])->name('profile.update');
+        Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     });

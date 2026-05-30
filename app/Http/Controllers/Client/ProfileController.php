@@ -26,7 +26,7 @@ class ProfileController extends Controller
             'password'  => 'nullable|min:6|confirmed',
         ]);
 
-        $user->full_name = $request->full_name;
+        $user->name = $request->name;
         $user->email = $request->email;
 
         if ($request->filled('password')) {
