@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
 <head>
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>EasyPark - @yield('title')</title>
-
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-
     <style>
         body { font-family: 'Inter', sans-serif; }
         .material-symbols-outlined {
-            font-variation-settings:
-            'FILL' 0,
-            'wght' 400,
-            'GRAD' 0,
-            'opsz' 24
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
         }
     </style>
-
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -37,8 +35,7 @@
     </script>
 </head>
 
-<body class="font-display bg-background-light dark:bg-background-dark
-             text-[#333333] dark:text-slate-200">
+<body class="font-display bg-background-light dark:bg-background-dark text-[#333333] dark:text-slate-200">
 <div class="relative flex min-h-screen w-full flex-col">
 
     {{-- Top Navigation --}}
@@ -82,16 +79,17 @@
                     </button>
 
                     <a href="{{ route('client.profile.edit') }}"
-   class="flex items-center justify-center rounded-full size-10 bg-primary text-white font-bold text-sm ring-2 ring-transparent hover:ring-primary transition">
-    {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-</a>
-                     <form method="POST" action="{{ route('logout') }}">
-    @csrf
-    <button type="submit"
-        class="flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-red-500 transition">
-        Logout
-    </button>
-</form>
+                       class="flex items-center justify-center rounded-full size-10 bg-primary text-white font-bold text-sm ring-2 ring-transparent hover:ring-primary transition">
+                        {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                    </a>
+
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit"
+                            class="flex items-center gap-1.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-red-500 transition">
+                            Logout
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -103,5 +101,37 @@
         </div>
     </main>
 </div>
+
+<script>
+    if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('darkModeToggle')?.classList.remove('bg-slate-200');
+        document.getElementById('darkModeToggle')?.classList.add('bg-primary');
+        document.getElementById('toggleDot')?.classList.remove('translate-x-1');
+        document.getElementById('toggleDot')?.classList.add('translate-x-6');
+    }
+
+    function toggleDarkMode() {
+        const html = document.documentElement;
+        const toggle = document.getElementById('darkModeToggle');
+        const dot = document.getElementById('toggleDot');
+
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark');
+            toggle.classList.remove('bg-primary');
+            toggle.classList.add('bg-slate-200');
+            dot.classList.remove('translate-x-6');
+            dot.classList.add('translate-x-1');
+            localStorage.setItem('theme', 'light');
+        } else {
+            html.classList.add('dark');
+            toggle.classList.remove('bg-slate-200');
+            toggle.classList.add('bg-primary');
+            dot.classList.remove('translate-x-1');
+            dot.classList.add('translate-x-6');
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+</script>
 </body>
 </html>
