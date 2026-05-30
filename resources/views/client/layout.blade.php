@@ -82,10 +82,16 @@
                     </button>
 
                     <a href="{{ route('client.profile.edit') }}"
-                       class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10
-                              ring-2 ring-transparent hover:ring-primary transition">
-                        {{-- you can set background-image via inline style or show initial --}}
-                    </a>
+   class="flex items-center justify-center rounded-full size-10 bg-primary text-white font-bold text-sm ring-2 ring-transparent hover:ring-primary transition">
+    {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+</a>
+                     <form method="POST" action="{{ route('logout') }}">
+    @csrf
+    <button type="submit"
+        class="flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-red-500 transition">
+        Logout
+    </button>
+</form>
                 </div>
             </div>
         </div>
