@@ -84,5 +84,32 @@
             </button>
         </form>
     </div>
+    {{-- Settings Card --}}
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+        <h2 class="text-base font-bold text-[#0d131c] mb-5">Settings</h2>
+
+        {{-- Dark Mode Toggle --}}
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="text-sm font-medium text-slate-700">Dark Mode</p>
+                <p class="text-xs text-slate-400 mt-0.5">Switch between light and dark theme</p>
+            </div>
+
+            <button id="darkModeToggle"
+                    onclick="toggleDarkMode()"
+                    class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none bg-slate-200"
+                    role="switch">
+                <span id="toggleDot"
+                      class="inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform translate-x-1">
+                </span>
+            </button>
+        </div>
+    </div>
+
+<script>
+    // Check saved preference on page load
+    if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('darkModeToggl
 </div>
 @endsection
