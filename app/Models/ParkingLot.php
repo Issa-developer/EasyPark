@@ -10,7 +10,7 @@ class ParkingLot extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'location', 'total_spots', 'hourly_rate', 'status',
+        'name', 'location','latitude', 'longitude', 'total_spots', 'hourly_rate', 'status',
     ];
 
     public function spots()
