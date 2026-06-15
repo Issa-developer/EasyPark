@@ -80,6 +80,15 @@
                         <span><span class="font-bold text-slate-700">{{ $lot['total_spots'] }}</span> Total</span>
                         <span><span class="font-bold text-slate-700">{{ $percent }}%</span> Full</span>
                     </div>
+                    @if($lot['latitude'] && $lot['longitude'])
+    <a
+        href="https://www.google.com/maps/dir/?api=1&destination={{ $lot['latitude'] }},{{ $lot['longitude'] }}"
+        target="_blank"
+        class="mt-4 block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition"
+    >
+        🧭 Navigate
+    </a>
+@endif
                 </div>
             </div>
             @endforeach

@@ -15,12 +15,14 @@ class DashboardController extends Controller
 
         $lots = ParkingLot::with('spots')->get()->map(function ($lot) {
             return [
-                'id'          => $lot->id,
-                'name'        => $lot->name,
-                'total_spots' => $lot->total_spots,
-                'available'   => $lot->spots->where('status', 'available')->count(),
-                'occupied'    => $lot->spots->where('status', 'occupied')->count(),
-            ];
+    'id'          => $lot->id,
+    'name'        => $lot->name,
+    'latitude'    => $lot->latitude,
+    'longitude'   => $lot->longitude,
+    'total_spots' => $lot->total_spots,
+    'available'   => $lot->spots->where('status', 'available')->count(),
+    'occupied'    => $lot->spots->where('status', 'occupied')->count(),
+];
         });
 
         $totalSessions = ParkingSession::where('status', 'completed')->count();
