@@ -25,7 +25,7 @@
                                 {{ $vehicle->make }} {{ $vehicle->model }}
                             </p>
                             <p class="text-sm text-slate-600 dark:text-slate-400">
-                                Plate: {{ $vehicle->plate_number }}
+                                Plate: {{ $vehicle->license_plate }}
                             </p>
                         </div>
                     </li>
