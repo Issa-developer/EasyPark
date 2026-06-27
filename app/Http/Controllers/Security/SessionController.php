@@ -59,14 +59,16 @@ public function entry(Request $request)
 
     $spot->update(['status' => 'occupied']);
 
+    $vehicle = \App\Models\Vehicle::where('license_plate', $plate)->first();
+
     ParkingSession::create([
         'parking_lot_id'         => $request->parking_lot_id,
         'parking_spot_id'        => $spot->id,
         'license_plate_snapshot' => $plate,
         'started_at'             => now(),
         'status'                 => 'active',
-        'user_id'                => null,
-        'vehicle_id'             => null,
+        'user_id'                => $vehicle?->user_id,
+        'vehicle_id'             => $vehicle?->id,
     ]);
 
     return back()->with('entry_success', "Vehicle $plate logged in successfully.");
