@@ -53,7 +53,7 @@
           <h1 class="text-text-light dark:text-text-dark tracking-tight text-3xl font-bold text-center">Log in to your Account</h1>
 
           <div class="mt-8">
-            <form class="space-y-6" method="POST" action="{{ route('login') }}">
+            <form class="space-y-6" method="POST" action="{{ route('login.post') }}">
               @csrf
 
               {{-- Email --}}
