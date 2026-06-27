@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class AuthController extends Controller
 {
@@ -24,7 +25,7 @@ public function register(Request $request)
     $request->validate([
         'full_name'     => 'required|string|max:255',
         'email'         => 'required|email|unique:users,email',
-        'password'      => 'required|string|min:6|confirmed',
+        'password'      => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
         'license_plate' => 'required|string|max:50',
         'car_make'      => 'required|string|max:100',
         'car_model'     => 'required|string|max:100',

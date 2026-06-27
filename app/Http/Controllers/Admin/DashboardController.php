@@ -7,6 +7,7 @@ use App\Models\ParkingLot;
 use App\Models\ParkingSession;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Password;
 
 class DashboardController extends Controller
 {
@@ -72,7 +73,7 @@ class DashboardController extends Controller
     $request->validate([
         'name'     => 'required|string|max:255',
         'email'    => 'required|email|unique:users,email',
-        'password' => 'required|string|min:6',
+        'password' => ['required', Password::min(8)->letters()->numbers()],
     ]);
 
     User::create([
