@@ -6,6 +6,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Security\SessionController;
 use App\Http\Controllers\Client\DashboardController as ClientDashboard;
+use App\Http\Controllers\Client\HistoryController;
+use App\Http\Controllers\Client\VehicleController;
+use App\Http\Controllers\Client\PaymentController;
 use App\Http\Controllers\Client\ProfileController;
 
 // ─── Root ────────────────────────────────────────────────
@@ -51,10 +54,10 @@ Route::middleware(['auth', 'role:client'])
     ->prefix('client')
     ->name('client.')
     ->group(function () {
-        Route::get('/dashboard',      [ClientDashboard::class, 'index'])->name('dashboard');
-        Route::get('/history',        [ClientDashboard::class, 'index'])->name('history.index');
-        Route::get('/vehicles',       [ClientDashboard::class, 'index'])->name('vehicles.index');
-        Route::get('/payments',       [ClientDashboard::class, 'index'])->name('payments.index');
-        Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::get('/dashboard',       [ClientDashboard::class, 'index'])->name('dashboard');
+        Route::get('/history',         [HistoryController::class, 'index'])->name('history.index');
+        Route::get('/vehicles',        [VehicleController::class, 'index'])->name('vehicles.index');
+        Route::get('/payments',        [PaymentController::class, 'index'])->name('payments.index');
+        Route::get('/profile/edit',    [ProfileController::class, 'edit'])->name('profile.edit');
         Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     });
