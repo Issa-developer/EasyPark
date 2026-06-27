@@ -44,7 +44,6 @@ Route::middleware(['auth', 'role:security'])
         Route::get('/dashboard',  [SessionController::class, 'index'])->name('dashboard');
         Route::post('/entry',     [SessionController::class, 'entry'])->name('entry');
         Route::post('/exit',      [SessionController::class, 'exit'])->name('exit');
-        Route::get('/search',     [SessionController::class, 'search'])->name('search');
     });
 
 // ─── Client Routes ────────────────────────────────────────
