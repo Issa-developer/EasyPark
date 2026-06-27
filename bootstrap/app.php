@@ -16,13 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
         'role' => \App\Http\Middleware\CheckRole::class,
     ]);
 
-    $middleware->validateCsrfTokens(except: [
-        'login',
-        'logout',
-        'admin/*',
-        'security/*',
-        'client/*',
-    ]);
+    $middleware->validateCsrfTokens(except: []);
 })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
