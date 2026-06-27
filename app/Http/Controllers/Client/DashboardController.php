@@ -25,16 +25,22 @@ class DashboardController extends Controller
 ];
         });
 
-        $totalSessions = ParkingSession::where('status', 'completed')->count();
+        $totalSessions = ParkingSession::where('user_id', $user->id)
+            ->where('status', 'completed')
+            ->count();
 
-        $totalSpent = ParkingSession::where('status', 'completed')->sum('cost');
+        $totalSpent = ParkingSession::where('user_id', $user->id)
+            ->where('status', 'completed')
+            ->sum('cost');
 
         $activeSession = ParkingSession::with(['lot', 'spot'])
+            ->where('user_id', $user->id)
             ->where('status', 'active')
             ->latest('started_at')
             ->first();
 
         $recentSessions = ParkingSession::with(['lot', 'spot'])
+            ->where('user_id', $user->id)
             ->where('status', 'completed')
             ->latest('started_at')
             ->take(5)
