@@ -1,5 +1,4 @@
-{{-- adjust this extends to match your layout --}}
-@extends('client.layouts.app')
+@extends('client.layout')
 
 @section('content')
 <div class="flex flex-col gap-8">
