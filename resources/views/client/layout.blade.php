@@ -24,7 +24,9 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#1973f0",
+                        "primary": "#0033A0",
+                        "strath-red": "#CE1126",
+                        "strath-yellow": "#FFCC00",
                         "background-light": "#f6f7f8",
                         "background-dark": "#101822",
                     },
@@ -42,15 +44,12 @@
     <header class="sticky top-0 z-10 w-full bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
         <div class="container mx-auto">
             <div class="flex items-center justify-between whitespace-nowrap px-4 py-3">
-                <div class="flex items-center gap-4 text-[#0d131c] dark:text-slate-50">
-                    <div class="size-6 text-primary">
-                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd"
-                                  d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z"
-                                  fill="currentColor" fill-rule="evenodd"></path>
-                        </svg>
+                <div class="flex items-center gap-3 text-[#0d131c] dark:text-slate-50">
+                    <img src="{{ asset('images/strathmore-logo.svg') }}" alt="Strathmore University" class="h-9 w-auto">
+                    <div>
+                        <p class="text-[10px] font-bold tracking-wider text-strath-red uppercase leading-none">Strathmore University</p>
+                        <h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">EasyPark</h2>
                     </div>
-                    <h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">EasyPark</h2>
                 </div>
 
                 <div class="hidden md:flex items-center gap-9">

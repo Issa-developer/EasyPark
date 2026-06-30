@@ -17,7 +17,7 @@
             <div>
                 <h2 class="text-lg font-bold text-[#0d131c] dark:text-slate-100">{{ $user->name }}</h2>
                 <p class="text-sm text-slate-500">{{ $user->email }}</p>
-                <span class="text-xs bg-purple-100 text-purple-600 font-semibold px-2 py-0.5 rounded-full">
+                <span class="text-xs bg-yellow-100 text-yellow-700 font-semibold px-2 py-0.5 rounded-full">
                     Student
                 </span>
             </div>
@@ -67,7 +67,7 @@
                        class="w-full rounded-xl border border-slate-200 bg-slate-50 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-100 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary"/>
             </div>
             <button type="submit"
-                    class="bg-primary hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-xl transition text-sm">
+                    class="bg-primary hover:bg-[#00267a] text-white font-bold py-2.5 px-6 rounded-xl transition text-sm">
                 Save Changes
             </button>
         </form>

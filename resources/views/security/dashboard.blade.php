@@ -23,7 +23,9 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#1973f0",
+                        "primary": "#0033A0",
+                        "strath-red": "#CE1126",
+                        "strath-yellow": "#FFCC00",
                         "background-light": "#f6f7f8",
                     },
                     fontFamily: { "display": ["Inter", "sans-serif"] },
@@ -40,16 +42,13 @@
     <header class="sticky top-0 z-10 w-full bg-white/80 backdrop-blur-sm border-b border-slate-200">
         <div class="container mx-auto">
             <div class="flex items-center justify-between px-4 py-3">
-                <div class="flex items-center gap-4 text-[#0d131c]">
-                    <div class="size-6 text-primary">
-                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd"
-                                  d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z"
-                                  fill="currentColor" fill-rule="evenodd"></path>
-                        </svg>
+                <div class="flex items-center gap-3 text-[#0d131c]">
+                    <img src="{{ asset('images/strathmore-logo.svg') }}" alt="Strathmore University" class="h-9 w-auto">
+                    <div>
+                        <p class="text-[10px] font-bold tracking-wider text-strath-red uppercase leading-none">Strathmore University</p>
+                        <h2 class="text-lg font-bold">EasyPark</h2>
                     </div>
-                    <h2 class="text-lg font-bold">EasyPark</h2>
-                    <span class="text-xs bg-blue-100 text-primary font-semibold px-2 py-0.5 rounded-full">Security</span>
+                    <span class="text-xs bg-yellow-100 text-yellow-700 font-semibold px-2 py-0.5 rounded-full">Security</span>
                 </div>
 
                 <div class="flex items-center gap-3">
@@ -86,10 +85,10 @@
                             $percent = $lot['total_spots'] > 0
                                 ? round(($lot['occupied'] / $lot['total_spots']) * 100)
                                 : 0;
-                            $color = $percent >= 90 ? 'bg-red-500' : ($percent >= 60 ? 'bg-yellow-400' : 'bg-green-500');
+                            $color = $percent >= 90 ? 'bg-strath-red' : ($percent >= 60 ? 'bg-strath-yellow' : 'bg-strath-yellow');
                         @endphp
                         <span class="text-xs font-bold px-2 py-0.5 rounded-full
-                            {{ $percent >= 90 ? 'bg-red-100 text-red-600' : ($percent >= 60 ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-700') }}">
+                            {{ $percent >= 90 ? 'bg-red-100 text-red-600' : ($percent >= 60 ? 'bg-yellow-100 text-yellow-700' : 'bg-yellow-100 text-yellow-700') }}">
                             {{ $percent }}% Full
                         </span>
                     </div>
@@ -98,7 +97,7 @@
                              style="width: {{ $percent }}%"></div>
                     </div>
                     <div class="flex justify-between text-xs text-slate-500">
-                        <span><span class="font-semibold text-green-600">{{ $lot['available'] }}</span> Available</span>
+                        <span><span class="font-semibold text-yellow-600">{{ $lot['available'] }}</span> Available</span>
                         <span><span class="font-semibold text-red-500">{{ $lot['occupied'] }}</span> Occupied</span>
                         <span><span class="font-semibold text-slate-700">{{ $lot['total_spots'] }}</span> Total</span>
                     </div>

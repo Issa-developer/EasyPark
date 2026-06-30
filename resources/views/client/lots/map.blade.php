@@ -11,7 +11,7 @@
 
     {{-- Legend --}}
     <div class="flex flex-wrap gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
-        <div class="flex items-center gap-2 text-sm"><span class="w-4 h-4 rounded bg-green-500"></span> Available</div>
+        <div class="flex items-center gap-2 text-sm"><span class="w-4 h-4 rounded bg-strath-yellow"></span> Available</div>
         <div class="flex items-center gap-2 text-sm"><span class="w-4 h-4 rounded bg-red-500"></span> Occupied</div>
         <div class="flex items-center gap-2 text-sm"><span class="w-4 h-4 rounded bg-yellow-400"></span> Reserved</div>
         <div class="flex items-center gap-2 text-sm"><span class="w-4 h-4 rounded bg-gray-400"></span> Out of Service</div>
@@ -23,8 +23,8 @@
             @foreach($spots as $spot)
                 @php
                     $color = match($spot->status) {
-                        'available' => 'bg-green-500',
-                        'occupied' => 'bg-red-500',
+                        'available' => 'bg-strath-yellow',
+                        'occupied' => 'bg-strath-red',
                         'reserved' => 'bg-yellow-400',
                         default => 'bg-gray-400',
                     };

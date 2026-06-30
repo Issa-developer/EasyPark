@@ -6,17 +6,33 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style> body { font-family: 'Inter', sans-serif; } </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0033A0",
+                        "strath-red": "#CE1126",
+                        "strath-yellow": "#FFCC00",
+                    },
+                },
+            },
+        }
+    </script>
 </head>
 <body class="h-full">
 <div class="min-h-screen flex flex-col">
     {{-- Top bar --}}
     <header class="w-full flex items-center justify-between px-8 py-4 bg-white border-b">
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-blue-600 rounded-lg"></div>
-            <span class="font-bold text-lg">EasyPark</span>
+        <div class="flex items-center gap-3">
+            <img src="{{ asset('images/strathmore-logo.svg') }}" alt="Strathmore University" class="h-10 w-auto">
+            <div>
+                <p class="text-[10px] font-bold tracking-wider text-strath-red uppercase leading-none">Strathmore University</p>
+                <span class="font-bold text-lg">EasyPark</span>
+            </div>
         </div>
         <a href="{{ route('login') }}"
-           class="px-4 py-1.5 text-sm rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50">
+           class="px-4 py-1.5 text-sm rounded-md border border-primary text-primary hover:bg-blue-50">
             Login
         </a>
     </header>
@@ -44,24 +60,24 @@
                         <div class="md:col-span-2">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                             <input type="text" name="full_name" value="{{ old('full_name') }}"
-                                   class="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                                   class="block w-full rounded-md border-gray-300 focus:border-primary focus:ring-primary">
                         </div>
 
                         <div class="md:col-span-2">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
                             <input type="email" name="email" value="{{ old('email') }}"
-                                   class="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                                   class="block w-full rounded-md border-gray-300 focus:border-primary focus:ring-primary">
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
                             <input type="password" name="password"
-                                   class="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                                   class="block w-full rounded-md border-gray-300 focus:border-primary focus:ring-primary">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
                             <input type="password" name="password_confirmation"
-                                   class="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                                   class="block w-full rounded-md border-gray-300 focus:border-primary focus:ring-primary">
                         </div>
                     </div>
                 </section>
@@ -73,29 +89,29 @@
                         <div class="md:col-span-2">
                             <label class="block text-sm font-medium text-gray-700 mb-1">License Plate Number</label>
                             <input type="text" name="license_plate" value="{{ old('license_plate') }}"
-                                   class="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                                   class="block w-full rounded-md border-gray-300 focus:border-primary focus:ring-primary">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Car Make</label>
                             <input type="text" name="car_make" value="{{ old('car_make') }}"
-                                   class="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                                   class="block w-full rounded-md border-gray-300 focus:border-primary focus:ring-primary">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Car Model</label>
                             <input type="text" name="car_model" value="{{ old('car_model') }}"
-                                   class="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                                   class="block w-full rounded-md border-gray-300 focus:border-primary focus:ring-primary">
                         </div>
                     </div>
                 </section>
 
                 <button type="submit"
-                        class="w-full mt-2 py-3 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 transition">
+                        class="w-full mt-2 py-3 rounded-md bg-primary text-white font-medium hover:bg-[#00267a] transition">
                     Sign Up
                 </button>
 
                 <p class="text-center text-sm text-gray-600 mt-2">
                     Already have an account?
-                    <a href="{{ route('login') }}" class="text-blue-600 font-medium hover:underline">
+                    <a href="{{ route('login') }}" class="text-primary font-medium hover:underline">
                         Log in
                     </a>
                 </p>

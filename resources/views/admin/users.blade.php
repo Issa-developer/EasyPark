@@ -18,7 +18,9 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#1973f0",
+                        "primary": "#0033A0",
+                        "strath-red": "#CE1126",
+                        "strath-yellow": "#FFCC00",
                         "background-light": "#f6f7f8",
                     },
                 },
@@ -33,15 +35,12 @@
     <header class="sticky top-0 z-10 w-full bg-white/80 backdrop-blur-sm border-b border-slate-200">
         <div class="container mx-auto">
             <div class="flex items-center justify-between px-4 py-3">
-                <div class="flex items-center gap-4">
-                    <div class="size-6 text-primary">
-                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd"
-                                  d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z"
-                                  fill="currentColor" fill-rule="evenodd"></path>
-                        </svg>
+                <div class="flex items-center gap-3">
+                    <img src="{{ asset('images/strathmore-logo.svg') }}" alt="Strathmore University" class="h-9 w-auto">
+                    <div>
+                        <p class="text-[10px] font-bold tracking-wider text-strath-red uppercase leading-none">Strathmore University</p>
+                        <h2 class="text-lg font-bold">EasyPark</h2>
                     </div>
-                    <h2 class="text-lg font-bold">EasyPark</h2>
                     <span class="text-xs bg-red-100 text-red-600 font-semibold px-2 py-0.5 rounded-full">Admin</span>
                 </div>
 
@@ -81,8 +80,8 @@
             <div class="grid grid-cols-2 gap-4 mb-6">
                 <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
                     <div class="flex items-center gap-3 mb-2">
-                        <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-                            <span class="material-symbols-outlined text-green-600 text-base">security</span>
+                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary text-base">security</span>
                         </div>
                         <p class="text-sm text-slate-500">Security Guards</p>
                     </div>
@@ -123,7 +122,7 @@
                                 <td class="px-6 py-3 text-slate-600">{{ $user->email }}</td>
                                 <td class="px-6 py-3">
                                     <span class="text-xs font-semibold px-2 py-0.5 rounded-full
-                                        {{ $user->role === 'security' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-primary' }}">
+                                        {{ $user->role === 'security' ? 'bg-blue-100 text-primary' : 'bg-yellow-100 text-yellow-700' }}">
                                         {{ $user->role === 'security' ? 'Security Guard' : 'Student/Lecturer' }}
                                     </span>
                                 </td>

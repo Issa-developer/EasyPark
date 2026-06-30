@@ -105,11 +105,11 @@
                 $percent = $lot['total_spots'] > 0
                     ? round(($lot['occupied'] / $lot['total_spots']) * 100)
                     : 0;
-                $statusColor = $percent >= 90 ? 'bg-red-500' : ($percent >= 60 ? 'bg-yellow-400' : 'bg-green-500');
+                $statusColor = $percent >= 90 ? 'bg-strath-red' : ($percent >= 60 ? 'bg-strath-yellow' : 'bg-strath-yellow');
                 $statusText = $percent >= 90 ? 'Almost Full' : ($percent >= 60 ? 'Filling Up' : 'Available');
                 $statusBadge = $percent >= 90
                     ? 'bg-red-100 text-red-600'
-                    : ($percent >= 60 ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-700');
+                    : ($percent >= 60 ? 'bg-yellow-100 text-yellow-700' : 'bg-yellow-100 text-yellow-700');
             @endphp
             <div class="bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
                 <div class="px-5 pt-5 pb-4 border-b border-slate-100 dark:border-slate-800">
@@ -123,7 +123,7 @@
                 </div>
                 <div class="px-5 py-4">
                     <div class="text-center mb-3">
-                        <p class="text-4xl font-black text-green-500">{{ $lot['available'] }}</p>
+                        <p class="text-4xl font-black text-strath-yellow">{{ $lot['available'] }}</p>
                         <p class="text-xs text-slate-500 mt-1">spots available</p>
                     </div>
                     <div class="w-full bg-slate-100 rounded-full h-2.5 mb-3">
@@ -131,7 +131,7 @@
                              style="width: {{ $percent }}%"></div>
                     </div>
                     <div class="flex justify-between text-xs text-slate-500">
-                        <span><span class="font-bold text-green-600">{{ $lot['available'] }}</span> Free</span>
+                        <span><span class="font-bold text-yellow-600">{{ $lot['available'] }}</span> Free</span>
                         <span><span class="font-bold text-red-500">{{ $lot['occupied'] }}</span> Taken</span>
                         <span><span class="font-bold text-slate-700">{{ $lot['total_spots'] }}</span> Total</span>
                         <span><span class="font-bold text-slate-700">{{ $percent }}%</span> Full</span>
@@ -140,7 +140,7 @@
                         <a
                             href="https://www.google.com/maps/dir/?api=1&destination={{ $lot['latitude'] }},{{ $lot['longitude'] }}"
                             target="_blank"
-                            class="mt-4 block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition"
+                            class="mt-4 block w-full text-center bg-primary hover:bg-[#00267a] text-white font-medium py-2 rounded-lg transition"
                         >
                             🧭 Navigate
                         </a>

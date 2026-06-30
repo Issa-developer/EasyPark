@@ -11,7 +11,9 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#1973f0",
+                        "primary": "#0033A0",
+                        "strath-red": "#CE1126",
+                        "strath-yellow": "#FFCC00",
                         "background-light": "#f6f7f8",
                     },
                 },
@@ -25,16 +27,13 @@
     {{-- Left panel --}}
     <div class="w-full lg:w-1/2 flex flex-col justify-center px-8 lg:px-24 bg-white shadow-sm">
 
-        {{-- Logo --}}
-        <div class="mb-10 flex items-center gap-3">
-            <div class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center">
-                <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white">
-                    <path clip-rule="evenodd"
-                          d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z"
-                          fill="currentColor" fill-rule="evenodd"></path>
-                </svg>
+        {{-- Strathmore Branding --}}
+        <div class="mb-8 flex flex-col items-start">
+            <img src="{{ asset('images/strathmore-logo.svg') }}" alt="Strathmore University" class="h-16 w-auto mb-3">
+            <div>
+                <p class="text-xs font-bold tracking-widest text-strath-red uppercase">Strathmore University</p>
+                <h2 class="font-bold text-xl text-[#0d131c]">EasyPark</h2>
             </div>
-            <span class="font-bold text-xl text-[#0d131c]">EasyPark</span>
         </div>
 
         <h1 class="text-2xl font-bold text-[#0d131c] mb-1">Log in to your Account</h1>
@@ -85,7 +84,7 @@
 
             {{-- Submit --}}
             <button type="submit"
-                    class="w-full py-2.5 rounded-xl bg-primary hover:bg-blue-700 text-white font-semibold text-sm transition shadow-sm">
+                    class="w-full py-2.5 rounded-xl bg-primary hover:bg-[#00267a] text-white font-semibold text-sm transition shadow-sm">
                 Login
             </button>
 
