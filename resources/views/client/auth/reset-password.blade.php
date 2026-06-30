@@ -2,7 +2,7 @@
 <html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
-    <title>EasyPark - Login</title>
+    <title>EasyPark - Reset Password</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style> body { font-family: 'Inter', sans-serif; } </style>
@@ -37,11 +37,13 @@
             <span class="font-bold text-xl text-[#0d131c]">EasyPark</span>
         </div>
 
-        <h1 class="text-2xl font-bold text-[#0d131c] mb-1">Log in to your Account</h1>
-        <p class="text-sm text-slate-500 mb-8">Welcome back! Please enter your details.</p>
+        <h1 class="text-2xl font-bold text-[#0d131c] mb-1">Reset Password</h1>
+        <p class="text-sm text-slate-500 mb-8">Choose a new password for your account.</p>
 
-        <form method="POST" action="{{ route('login.post') }}" class="space-y-5">
+        <form method="POST" action="{{ route('password.update') }}" class="space-y-5">
             @csrf
+
+            <input type="hidden" name="token" value="{{ $token }}">
 
             {{-- Status Message --}}
             @if(session('status'))
@@ -67,35 +69,25 @@
 
             {{-- Password --}}
             <div>
-                <div class="flex items-center justify-between mb-1.5">
-                    <label class="block text-sm font-medium text-slate-700">Password</label>
-                    <a href="{{ route('password.request') }}" class="text-xs text-primary hover:underline">Forgot Password?</a>
-                </div>
+                <label class="block text-sm font-medium text-slate-700 mb-1.5">New Password</label>
                 <input type="password" name="password"
                        placeholder="••••••••"
                        class="block w-full rounded-xl border-slate-200 bg-slate-50 px-4 py-2.5 text-sm focus:border-primary focus:ring-primary transition">
             </div>
 
-            {{-- Remember me --}}
-            <div class="flex items-center gap-2">
-                <input id="remember" name="remember" type="checkbox"
-                       class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary">
-                <label for="remember" class="text-sm text-slate-600">Remember me</label>
+            {{-- Confirm Password --}}
+            <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1.5">Confirm New Password</label>
+                <input type="password" name="password_confirmation"
+                       placeholder="••••••••"
+                       class="block w-full rounded-xl border-slate-200 bg-slate-50 px-4 py-2.5 text-sm focus:border-primary focus:ring-primary transition">
             </div>
 
             {{-- Submit --}}
             <button type="submit"
                     class="w-full py-2.5 rounded-xl bg-primary hover:bg-blue-700 text-white font-semibold text-sm transition shadow-sm">
-                Login
+                Reset Password
             </button>
-
-            {{-- Register link --}}
-            <p class="text-center text-sm text-slate-500">
-                Don't have an account?
-                <a href="{{ route('register') }}" class="text-primary font-semibold hover:underline">
-                    Sign Up
-                </a>
-            </p>
         </form>
     </div>
 

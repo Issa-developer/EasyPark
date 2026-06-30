@@ -10,6 +10,7 @@ use App\Http\Controllers\Client\HistoryController;
 use App\Http\Controllers\Client\VehicleController;
 use App\Http\Controllers\Client\PaymentController;
 use App\Http\Controllers\Client\ProfileController;
+use App\Http\Controllers\PasswordResetController;
 
 // ─── Root ────────────────────────────────────────────────
 Route::get('/', fn() => redirect()->route('login'));
@@ -22,6 +23,12 @@ Route::middleware('guest')->group(function () {
         ->name('login.post');
     Route::get('/register',  [AuthController::class, 'showRegisterForm'])->name('register');
     Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+
+    // Password reset routes
+    Route::get('/forgot-password', [PasswordResetController::class, 'showForgotForm'])->name('password.request');
+    Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink'])->name('password.email');
+    Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/reset-password', [PasswordResetController::class, 'reset'])->name('password.update');
 });
 
 // ─── Logout ───────────────────────────────────────────────
