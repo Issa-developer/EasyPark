@@ -36,7 +36,7 @@
         <div class="container mx-auto">
             <div class="flex items-center justify-between px-4 py-3">
                 <div class="flex items-center gap-3">
-                    <img src="{{ asset('images/strathmore-logo.svg') }}" alt="Strathmore University" class="h-9 w-auto">
+                    <img src="{{ asset('images/strathmore-logo.png') }}" alt="Strathmore University" class="h-9 w-auto">
                     <div>
                         <p class="text-[10px] font-bold tracking-wider text-strath-red uppercase leading-none">Strathmore University</p>
                         <h2 class="text-lg font-bold">EasyPark</h2>

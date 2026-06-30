@@ -29,7 +29,7 @@
 
         {{-- Strathmore Branding --}}
         <div class="mb-8 flex flex-col items-start">
-            <img src="{{ asset('images/strathmore-logo.svg') }}" alt="Strathmore University" class="h-16 w-auto mb-3">
+            <img src="{{ asset('images/strathmore-logo.png') }}" alt="Strathmore University" class="h-20 w-auto mb-3">
             <div>
                 <p class="text-xs font-bold tracking-widest text-strath-red uppercase">Strathmore University</p>
                 <h2 class="font-bold text-xl text-[#0d131c]">EasyPark</h2>

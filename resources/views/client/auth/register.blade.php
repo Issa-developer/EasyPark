@@ -25,7 +25,7 @@
     {{-- Top bar --}}
     <header class="w-full flex items-center justify-between px-8 py-4 bg-white border-b">
         <div class="flex items-center gap-3">
-            <img src="{{ asset('images/strathmore-logo.svg') }}" alt="Strathmore University" class="h-10 w-auto">
+            <img src="{{ asset('images/strathmore-logo.png') }}" alt="Strathmore University" class="h-10 w-auto">
             <div>
                 <p class="text-[10px] font-bold tracking-wider text-strath-red uppercase leading-none">Strathmore University</p>
                 <span class="font-bold text-lg">EasyPark</span>

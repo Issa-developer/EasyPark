@@ -29,7 +29,7 @@
 
         {{-- Strathmore Branding --}}
         <div class="mb-8 flex flex-col items-start">
-            <img src="{{ asset('images/strathmore-logo.svg') }}" alt="Strathmore University" class="h-16 w-auto mb-3">
+            <img src="{{ asset('images/strathmore-logo.png') }}" alt="Strathmore University" class="h-20 w-auto mb-3">
             <div>
                 <p class="text-xs font-bold tracking-widest text-strath-red uppercase">Strathmore University</p>
                 <h2 class="font-bold text-xl text-[#0d131c]">EasyPark</h2>
@@ -101,7 +101,8 @@
     {{-- Right image panel --}}
     <div class="hidden lg:flex lg:w-1/2 bg-primary items-center justify-center relative overflow-hidden">
         <img src="{{ asset('images/parking-login.png') }}"
-             class="w-full h-full object-cover opacity-30 absolute inset-0" alt="Parking">
+             class="w-full h-full object-cover absolute inset-0" alt="Parking">
+        <div class="absolute inset-0 bg-primary/70"></div>
         <div class="relative z-10 text-center px-12">
             <h2 class="text-4xl font-black text-white leading-tight mb-4">
                 Smart Parking<br/>for Strathmore
