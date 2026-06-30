@@ -150,7 +150,7 @@
                             🧭 Navigate
                         </a>
                     @endif
-                    <a href="{{ route('lots.map', $lot['id']) }}"
+                    <a href="{{ route('client.lots.map', $lot['id']) }}"
                        class="mt-3 block w-full text-center bg-slate-800 hover:bg-slate-900 text-white font-medium py-2 rounded-lg transition">
                         View Spot Map
                     </a>
