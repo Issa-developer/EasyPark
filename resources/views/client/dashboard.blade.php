@@ -16,15 +16,10 @@
     </div>
 
     {{-- Stats cards --}}
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
             <p class="text-sm text-[#6c757d] dark:text-slate-400 mb-1">Total Sessions</p>
             <p class="text-3xl font-bold">{{ $totalSessions }}</p>
-        </div>
-
-        <div class="bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
-            <p class="text-sm text-[#6c757d] dark:text-slate-400 mb-1">Total Spent</p>
-            <p class="text-3xl font-bold">${{ number_format($totalSpent, 2) }}</p>
         </div>
 
         <div class="bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">

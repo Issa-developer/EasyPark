@@ -29,10 +29,6 @@ class DashboardController extends Controller
             ->where('status', 'completed')
             ->count();
 
-        $totalSpent = ParkingSession::where('user_id', $user->id)
-            ->where('status', 'completed')
-            ->sum('cost');
-
         $activeSession = ParkingSession::with(['lot', 'spot'])
             ->where('user_id', $user->id)
             ->where('status', 'active')
@@ -50,7 +46,6 @@ class DashboardController extends Controller
             'user',
             'lots',
             'totalSessions',
-            'totalSpent',
             'activeSession',
             'recentSessions'
         ));
