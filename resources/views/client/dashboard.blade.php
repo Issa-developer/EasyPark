@@ -40,6 +40,67 @@
         </div>
     </div>
 
+    {{-- Navigate from current location --}}
+    <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-6">
+        <h2 class="text-xl font-bold mb-4">Navigate to Parking Lot</h2>
+        <p class="text-sm text-slate-500 mb-4">Select a lot and we'll open directions from your current location.</p>
+
+        <div class="flex flex-col md:flex-row gap-4">
+            <select id="navigateLotSelect" class="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm">
+                <option value="">Choose a parking lot</option>
+                @foreach($lots as $lot)
+                    @if($lot['latitude'] && $lot['longitude'])
+                        <option value="{{ $lot['latitude'] }},{{ $lot['longitude'] }}">
+                            {{ $lot['name'] }}
+                        </option>
+                    @endif
+                @endforeach
+            </select>
+
+            <button onclick="navigateToLot()"
+                    class="bg-primary hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-xl transition text-sm">
+                Open Directions
+            </button>
+        </div>
+
+        <p id="navigateError" class="hidden text-sm text-red-600 mt-3"></p>
+    </div>
+
+    <script>
+        function navigateToLot() {
+            const select = document.getElementById('navigateLotSelect');
+            const error = document.getElementById('navigateError');
+            const coords = select.value;
+
+            if (!coords) {
+                error.textContent = 'Please select a parking lot first.';
+                error.classList.remove('hidden');
+                return;
+            }
+
+            if (!navigator.geolocation) {
+                error.textContent = 'Geolocation is not supported by your browser.';
+                error.classList.remove('hidden');
+                return;
+            }
+
+            error.classList.add('hidden');
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const origin = `${position.coords.latitude},${position.coords.longitude}`;
+                    const url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${coords}`;
+                    window.open(url, '_blank');
+                },
+                (err) => {
+                    error.textContent = 'Unable to retrieve your location: ' + err.message;
+                    error.classList.remove('hidden');
+                },
+                { enableHighAccuracy: true, timeout: 10000 }
+            );
+        }
+    </script>
+
     {{-- Parking Lot Availability --}}
     <div>
         <h2 class="text-xl font-bold mb-4">Parking Availability</h2>
@@ -81,14 +142,18 @@
                         <span><span class="font-bold text-slate-700">{{ $percent }}%</span> Full</span>
                     </div>
                     @if($lot['latitude'] && $lot['longitude'])
-    <a
-        href="https://www.google.com/maps/dir/?api=1&destination={{ $lot['latitude'] }},{{ $lot['longitude'] }}"
-        target="_blank"
-        class="mt-4 block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition"
-    >
-        🧭 Navigate
-    </a>
-@endif
+                        <a
+                            href="https://www.google.com/maps/dir/?api=1&destination={{ $lot['latitude'] }},{{ $lot['longitude'] }}"
+                            target="_blank"
+                            class="mt-4 block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition"
+                        >
+                            🧭 Navigate
+                        </a>
+                    @endif
+                    <a href="{{ route('lots.map', $lot['id']) }}"
+                       class="mt-3 block w-full text-center bg-slate-800 hover:bg-slate-900 text-white font-medium py-2 rounded-lg transition">
+                        View Spot Map
+                    </a>
                 </div>
             </div>
             @endforeach

@@ -55,4 +55,14 @@ class DashboardController extends Controller
             'recentSessions'
         ));
     }
+
+    /**
+     * Display the parking spot map for a specific lot.
+     */
+    public function lotMap(ParkingLot $lot)
+    {
+        $spots = $lot->spots()->orderBy('spot_number')->get();
+
+        return view('client.lots.map', compact('lot', 'spots'));
+    }
 }

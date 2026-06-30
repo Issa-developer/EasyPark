@@ -62,4 +62,5 @@ Route::middleware(['auth', 'role:client'])
         Route::get('/payments',        [PaymentController::class, 'index'])->name('payments.index');
         Route::get('/profile/edit',    [ProfileController::class, 'edit'])->name('profile.edit');
         Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+        Route::get('/lots/{lot}/map', [ClientDashboard::class, 'lotMap'])->name('lots.map');
     });
