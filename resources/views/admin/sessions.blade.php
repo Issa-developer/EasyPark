@@ -72,9 +72,16 @@
     <main class="flex-1 w-full">
         <div class="container mx-auto px-4 py-8">
 
-            <div class="mb-6">
-                <h1 class="text-2xl font-bold text-[#0d131c]">All Parking Sessions</h1>
-                <p class="text-slate-500 text-sm mt-1">Search and filter all vehicle sessions</p>
+            <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl font-bold text-[#0d131c]">All Parking Sessions</h1>
+                    <p class="text-slate-500 text-sm mt-1">Search and filter all vehicle sessions</p>
+                </div>
+                <a href="{{ route('admin.dashboard') }}"
+                   class="inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2 px-4 rounded-xl transition text-sm">
+                    <span class="material-symbols-outlined text-base">arrow_back</span>
+                    Back to Dashboard
+                </a>
             </div>
 
             {{-- Filters --}}
